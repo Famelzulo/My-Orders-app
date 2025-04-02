@@ -4,7 +4,6 @@ import axios from 'axios';
 const API_BASE_URL = "https://hiagox26n3.execute-api.us-east-1.amazonaws.com";
 
 const api = {
-  // Obtener todas las órdenes
   getOrders: async () => {
     try {
       const response = await axios.get(`${API_BASE_URL}/orders`);
@@ -15,7 +14,7 @@ const api = {
     }
   },
 
-  // Obtener una orden por su ID
+  
   getOrderById: async (id) => {
     try {
       const response = await axios.get(`${API_BASE_URL}/orders/${id}`);
@@ -35,7 +34,6 @@ const api = {
     }
   },
 
-  // Crear una nueva orden
   createOrder: async (orderData) => {
     try {
       const response = await axios.post(`${API_BASE_URL}/orders`, orderData);
@@ -46,7 +44,6 @@ const api = {
     }
   },
 
-  // Editar una orden existente
   updateOrder: async (id, updatedData) => {
     try {
       const response = await axios.put(`${API_BASE_URL}/orders/${id}`, updatedData);
@@ -58,7 +55,6 @@ const api = {
   },
 
 
-  // Editar una orden existente
   deleteOrder: async (id) => {
     try {
       const response = await axios.delete(`${API_BASE_URL}/orders/${id}`);

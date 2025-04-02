@@ -24,7 +24,8 @@ const MyOrders = () => {
       const data = await api.deleteOrder(id);
       console.log("Fetched delete:", data);
 
-      // Update the orders state by filtering out the deleted order
+      // Update the orders and filter teh delete order
+      
       setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
     } catch (err) {
       console.error("Error deleting order:", err);

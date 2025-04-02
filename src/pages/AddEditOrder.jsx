@@ -129,7 +129,8 @@ const AddEditOrder = () => {
     }
 
     try {
-      // Ensure we don't have duplicate products
+      // for don't  duplicate products
+
       const uniqueProducts = order.products.reduce((acc, current) => {
         const existingProduct = acc.find(p => p.product_id === current.id);
         if (existingProduct) {
