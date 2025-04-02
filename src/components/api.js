@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://127.0.0.1:8000';
+// const API_BASE_URL = 'http://127.0.0.1:8000';
+const API_BASE_URL = "https://hiagox26n3.execute-api.us-east-1.amazonaws.com";
 
 const api = {
   // Obtener todas las órdenes
@@ -21,6 +22,15 @@ const api = {
       return response.data;
     } catch (error) {
       console.error(`Error fetching order ${id}:`, error);
+      throw error;
+    }
+  },
+  getProducts: async () => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/products`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error fetching order `, error);
       throw error;
     }
   },
@@ -45,7 +55,20 @@ const api = {
       console.error(`Error updating order ${id}:`, error);
       throw error;
     }
+  },
+
+
+  // Editar una orden existente
+  deleteOrder: async (id) => {
+    try {
+      const response = await axios.delete(`${API_BASE_URL}/orders/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error(`Error updating order ${id}:`, error);
+      throw error;
+    }
   }
+
 };
 
 export default api;
