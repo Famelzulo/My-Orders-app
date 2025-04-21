@@ -223,7 +223,7 @@ const AddEditOrder = () => {
               </option>
             ))}
           </select>
-        )}
+        )}8
         <label>Quantity</label>
         <input
           type="number"

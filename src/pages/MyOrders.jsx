@@ -61,7 +61,9 @@ const MyOrders = () => {
               <td>ORD00{order.id}</td>
               <td>{new Date(order.date).toLocaleDateString()}</td>
               <td>{order.quantity}</td>
+              
               <td>${order.price.toFixed(2)}</td>
+
               <td>
                 <Link to={`/add-order/${order.id}`} className="edit-link">Edit</Link>
                 <button onClick={() => deleteOrder(order.id)}>Delete</button>
