@@ -5,6 +5,14 @@
   text-align: center;
 }
 
+h1{
+  color: black;
+  margin-right: 39rem;
+  margin-top: 29px;
+  font-family: system-ui;
+
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -12,14 +20,46 @@ table {
 }
 
 th, td {
-  padding: 10px;
-  border: 1px solid #ddd;
+  padding: 15px;
+  border: 4px solid #ddd
 }
 
-button {
-  margin: 5px;
+.edit-button{
+  color: aqua;
+  margin-left: -30px;
+  width: 64px;
+  background-color:rgb(55, 52, 207)
+
+
+}
+
+.add-button{
+  margin: 4px;
   padding: 5px 10px;
-  cursor: pointer;
+    background-color: rgb(67, 165, 67);
+  border-radius: 6px;
+  color: #ddd;
+  width: 154px;
+  height: 37px;
+  border: white;
+  margin-left: 34rem;
+  font-size: 15px;
+  font-family: system-ui;
+}
+
+
+button {
+  margin: 4px;
+  padding: 5px 10px;
+    background-color: rgb(230, 41, 41);
+  border-radius: 6px;
+  color: #ddd;
+  width: 107px;
+  height: 37px;
+  border: white;
+  margin-left: 6px;
+  font-size: 15px;
+  font-family: system-ui;
 }
 
 button a {
@@ -27,6 +67,4 @@ button a {
   color: white;
 }
 
-button:hover {
-  background-color: #007bff;
-}
+

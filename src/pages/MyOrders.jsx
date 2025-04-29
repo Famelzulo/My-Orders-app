@@ -40,7 +40,7 @@ const MyOrders = () => {
   return (
     <div className="container">
       <h1>My Orders</h1>
-      <button>
+      <button className="add-button">
         <Link to="/add-order">+ Add New Order</Link>
       </button>
       <table border="1">
@@ -65,7 +65,9 @@ const MyOrders = () => {
               <td>${order.price.toFixed(2)}</td>
 
               <td>
-                <Link to={`/add-order/${order.id}`} className="edit-link">Edit</Link>
+                <button className="edit-button">
+                <Link to={`/add-order/${order.id}`} className="edit-link">Edit</Link></button>
+
                 <button onClick={() => deleteOrder(order.id)}>Delete</button>
               </td>
             </tr>

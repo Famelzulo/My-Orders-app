@@ -12,7 +12,7 @@ table {
 }
 
 th, td {
-  padding: 10px;
+  padding: 5px;
   border: 1px solid #ddd;
 }
 
@@ -20,6 +20,13 @@ button {
   margin: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  background-color: rgb(72, 177, 72);
+  border-radius: 6px;
+  color:#ddd;
+  width: 121px;
+  height: 37px;
+  border: white;
+  font-family: system-ui;
 }
 
 button a {
@@ -27,6 +34,4 @@ button a {
   color: white;
 }
 
-button:hover {
-  background-color: #007bff;
-}
+
