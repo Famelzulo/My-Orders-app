@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-import api from "../components/api"
+import api from "../components/api";
+import "../styles/MyOrders.css";
+import "../styles/AddEditOrder.css";
 
 const AddEditOrder = () => {
   const { id } = useParams();
@@ -36,7 +38,7 @@ const AddEditOrder = () => {
           if (!orderData) {
             throw new Error("Order not found");
           }
-          
+
           setOrder({
             orderNumber: `ORD00${orderData.id}`,
             id: orderData.id,
@@ -129,8 +131,7 @@ const AddEditOrder = () => {
     }
 
     try {
-      // for don't  duplicate products
-
+      // Ensure we don't have duplicate products
       const uniqueProducts = order.products.reduce((acc, current) => {
         const existingProduct = acc.find(p => p.product_id === current.id);
         if (existingProduct) {
@@ -178,7 +179,7 @@ const AddEditOrder = () => {
         <label>Final Price</label>
         <input type="text" value={`$ ${order.price.toFixed(2)}`} readOnly />
       </form>
-      <button onClick={() => openProductModal()}>Add Product</button>
+      <button onClick={() => openProductModal()} className="add-product-button">+ Add Product</button>
       <h3>Products in Order</h3>
       <table border="1">
         <thead>
@@ -200,19 +201,19 @@ const AddEditOrder = () => {
               <td>{p.quantity}</td>
               <td>${(p.price * p.quantity).toFixed(2)}</td>
               <td>
-                <button onClick={() => openProductModal(p)}>✏️ Edit</button>
-                <button onClick={() => removeProduct(p.id)}>❌ Remove</button>
+                <button onClick={() => openProductModal(p)} className="edit-button">✏️ Edit</button>
+                <button onClick={() => removeProduct(p.id)} className="remove-button">❌ Remove</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <button onClick={saveOrder}>Save Order</button>
+      <button onClick={saveOrder} className="save-order-button">Save Order</button>
 
       <Modal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}>
         <h2>{selectedProduct ? "Edit Product" : "Add Product"}</h2>
         {!selectedProduct && (
-          <select 
+          <select
             value={selectedProductId}
             onChange={(e) => setSelectedProductId(e.target.value)}
           >
@@ -223,7 +224,7 @@ const AddEditOrder = () => {
               </option>
             ))}
           </select>
-        )}8
+        )}
         <label>Quantity</label>
         <input
           type="number"
@@ -231,7 +232,7 @@ const AddEditOrder = () => {
           value={productQuantity}
           onChange={(e) => setProductQuantity(e.target.value)}
         />
-        <button 
+        <button
           onClick={addOrUpdateProduct}
           disabled={!selectedProduct && !selectedProductId}
         >

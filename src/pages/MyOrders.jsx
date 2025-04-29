@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../components/api"
+import api from "../components/api";
+import "../styles/MyOrders.css";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -24,8 +25,7 @@ const MyOrders = () => {
       const data = await api.deleteOrder(id);
       console.log("Fetched delete:", data);
 
-      // Update the orders and filter teh delete order
-      
+      // Update the orders state by filtering out the deleted order
       setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
     } catch (err) {
       console.error("Error deleting order:", err);
@@ -39,10 +39,12 @@ const MyOrders = () => {
 
   return (
     <div className="container">
-      <h1>My Orders</h1>
-      <button className="add-button">
-        <Link to="/add-order">+ Add New Order</Link>
-      </button>
+      <div className="header-container">
+        <h1>My Orders</h1>
+        <Link to="/add-order" className="add-order-button">
+          <span className="plus-icon">+</span> Add New Order
+        </Link>
+      </div>
       <table border="1">
         <thead>
           <tr>
@@ -61,14 +63,10 @@ const MyOrders = () => {
               <td>ORD00{order.id}</td>
               <td>{new Date(order.date).toLocaleDateString()}</td>
               <td>{order.quantity}</td>
-              
               <td>${order.price.toFixed(2)}</td>
-
               <td>
-                <button className="edit-button">
-                <Link to={`/add-order/${order.id}`} className="edit-link">Edit</Link></button>
-
-                <button onClick={() => deleteOrder(order.id)}>Delete</button>
+                <Link to={`/add-order/${order.id}`} className="edit-link">Edit</Link>
+                <button onClick={() => deleteOrder(order.id)} className="delete-button">Delete</button>
               </td>
             </tr>
           ))}
